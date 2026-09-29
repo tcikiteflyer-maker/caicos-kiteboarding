@@ -43,10 +43,10 @@ form?.addEventListener("submit", async (event) => {
     return;
   }
   if (!phoneOk) {
-    phoneInput.setCustomValidity("Use a phone number that works in Turks and Caicos.");
+    phoneInput.setCustomValidity("Use a mobile number that works on the island.");
     phoneInput.reportValidity();
     status.classList.add("error");
-    status.textContent = "Need a phone number that works in Turks and Caicos. A mobile Hunter can call or WhatsApp while you are on island.";
+    status.textContent = "Need a mobile number that works on the island.";
     return;
   }
 
