@@ -4,7 +4,7 @@
   --aqua: #2a8f9a;
   --foam: #f4efe6;
   --sand: #e4d2b0;
-  --gold: #c4a36a;
+  --gold: #f06a9a;
   --ink: #132226;
   --muted: #5c6d71;
   --white: #fffcf7;
@@ -114,7 +114,7 @@ h1, h2, h3, .display {
 }
 
 .nav-links a:hover {
-  color: var(--sand);
+  color: var(--gold);
 }
 
 .btn {
@@ -208,7 +208,7 @@ h1, h2, h3, .display {
   font-weight: 500;
   font-size: clamp(3.4rem, 6.4vw, 5.4rem);
   line-height: 0.92;
-  color: var(--sand);
+  color: #f7a8c8;
   margin: 0 0 12px;
   letter-spacing: -0.03em;
 }
