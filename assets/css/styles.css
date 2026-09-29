@@ -236,28 +236,20 @@ h1, h2, h3, .display {
   flex-wrap: wrap;
 }
 
-.pay-cash {
-  margin-top: 16px;
-  font-weight: 600;
+.hero .book-lead p.pay-note {
+  margin-top: 14px;
+  margin-bottom: 0;
+  max-width: 420px;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  font-weight: 400;
+  color: rgba(255, 252, 247, 0.72);
 }
 
-.pay-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 10px 14px;
-  margin-top: 10px;
-}
-
-.pay-row span {
-  font-size: 0.95rem;
-  color: rgba(255, 252, 247, 0.9);
-}
-
-.btn-pay {
-  background: transparent;
-  color: var(--white);
-  border: 1px solid rgba(255, 252, 247, 0.75);
+.pay-note a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 .btn-wa {
