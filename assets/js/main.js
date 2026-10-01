@@ -54,7 +54,7 @@ form?.addEventListener("submit", async (event) => {
   status.textContent = "Sending your request…";
 
   try {
-    const response = await fetch("https://formsubmit.co/ajax/tcikiteflyer@gmail.com", {
+    const response = await fetch("https://formsubmit.co/ajax/f7e1cbee729db21feb7b64802c10ef50", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
