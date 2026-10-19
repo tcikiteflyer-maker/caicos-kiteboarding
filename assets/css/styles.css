@@ -411,7 +411,8 @@ section.hero {
 }
 
 .card-photo img.pos-bar {
-  object-position: center 58%;
+  height: 420px;
+  object-position: center 40%;
 }
 
 .card-photo .card-body {
