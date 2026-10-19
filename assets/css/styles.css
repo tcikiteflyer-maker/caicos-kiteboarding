@@ -638,6 +638,18 @@ footer strong {
   background: rgba(11, 47, 56, 0.96);
 }
 
+.page main.sheet {
+  padding-top: 92px;
+}
+
+.page main.sheet > section {
+  padding-top: 28px;
+}
+
+body.lessons {
+  background: #efe6d6;
+}
+
 .faq-page {
   padding: 132px 0 88px;
 }
