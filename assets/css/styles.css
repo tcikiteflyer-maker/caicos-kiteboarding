@@ -1,5 +1,5 @@
 :root {
-  --deep: #0b2f38;
+  --deep: #000877;
   --teal: #165863;
   --aqua: #2a8f9a;
   --foam: #f4efe6;
@@ -71,7 +71,7 @@ h1, h2, h3, .display {
 }
 
 .nav.scrolled {
-  background: rgba(11, 47, 56, 0.92);
+  background: rgba(0, 8, 119, 0.92);
   backdrop-filter: blur(14px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
 }
@@ -184,7 +184,7 @@ h1, h2, h3, .display {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(11, 47, 56, 0.55) 0%, rgba(11, 47, 56, 0.42) 42%, rgba(11, 47, 56, 0.62) 100%);
+    linear-gradient(180deg, rgba(0, 8, 119, 0.45) 0%, rgba(0, 8, 119, 0.18) 42%, rgba(0, 8, 119, 0.4) 100%);
 }
 
 .book-panel {
@@ -561,7 +561,7 @@ textarea {
 }
 
 footer {
-  background: #081e24;
+  background: #00064a;
   color: rgba(255, 252, 247, 0.72);
   padding: 40px 0 28px;
   font-size: 0.92rem;
@@ -639,7 +639,7 @@ footer strong {
 }
 
 .page .nav {
-  background: rgba(11, 47, 56, 0.96);
+  background: rgba(0, 8, 119, 0.96);
 }
 
 .page main.sheet {
@@ -727,6 +727,15 @@ body.lessons {
 .wind-note {
   margin-top: 36px;
   max-width: 920px;
+}
+
+.spot-photo {
+  width: 100%;
+  height: min(62vw, 560px);
+  object-fit: cover;
+  object-position: center center;
+  border-radius: 28px;
+  margin-bottom: 32px;
 }
 
 .live-wind {
