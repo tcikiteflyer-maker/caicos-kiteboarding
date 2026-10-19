@@ -597,6 +597,7 @@ footer strong {
 
   .split,
   .cards,
+  .reviews .cards,
   .family .cards,
   .gallery,
   .contact-grid,
@@ -732,6 +733,21 @@ body.lessons {
   object-position: center center;
   border-radius: 28px;
   margin-bottom: 32px;
+}
+
+.reviews {
+  margin-top: 64px;
+}
+
+.reviews .cards {
+  grid-template-columns: 1fr 1fr;
+}
+
+.quote {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1.25rem;
+  line-height: 1.35;
+  margin: 12px 0 16px;
 }
 
 .live-wind {
