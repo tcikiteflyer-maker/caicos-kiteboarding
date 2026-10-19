@@ -410,11 +410,6 @@ section.hero {
   object-position: center 30%;
 }
 
-.card-photo img.pos-bar {
-  height: 420px;
-  object-position: center 40%;
-}
-
 .card-photo .card-body {
   padding: 8px 28px 28px;
 }
