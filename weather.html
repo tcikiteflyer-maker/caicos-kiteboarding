@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/styles.css?v=19" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=21" />
 </head>
 <body class="page">
   <header class="nav">
@@ -17,6 +17,10 @@
       <div class="brand-name">
         Caicos Kiteboarding
         <span>Long Bay Beach</span>
+      </div>
+      <div class="live-wind" hidden>
+        <strong data-wind-speed></strong>
+        <span data-wind-dir></span>
       </div>
     </a>
     <button class="menu-toggle" aria-label="Open menu">☰</button>
@@ -73,34 +77,32 @@
           </details>
           <details>
             <summary>Above 25 knots</summary>
-            <p>For riders who already handle a small kite. Beginners wait for a kinder day.</p>
+            <p>We discourage lessons above 25 knots. It is intimidating, and a first water start in that much wind is a bad idea. Advanced lessons can still go out when the rider already handles a small kite and the wind is steady.</p>
           </details>
         </div>
         <p class="muted" style="margin-top: 22px;">Water stays warm enough for board shorts all year. Winter is about the high 70s °F. Summer is the low to mid 80s. A rash guard is the useful extra. Most days on this beach are a 9 to 12 metre kite. The school brings the size for the wind that morning.</p>
       </div>
 
       <div class="wind-note">
-        <p class="eyebrow">Forecasts</p>
-        <h2 style="margin: 8px 0 8px;">Check these. Then wait for the call.</h2>
-        <p class="muted">Models and the beach are not always the same. The message about an hour before the lesson is the one that decides the day.</p>
-        <div class="forecast-links">
-          <a href="https://www.windfinder.com/forecast/providenciales_long_bay" target="_blank" rel="noopener">
-            <strong>Windfinder</strong>
-            <span>Long Bay forecast, knots and direction.</span>
-          </a>
-          <a href="https://www.windguru.cz/122666" target="_blank" rel="noopener">
-            <strong>Windguru</strong>
-            <span>The same beach, a second model.</span>
-          </a>
-          <a href="https://www.windfinder.com/report/pine_cay" target="_blank" rel="noopener">
-            <strong>Pine Cay station</strong>
-            <span>A live reading nearby, not on the beach itself.</span>
-          </a>
-          <a href="/#inquiry-form">
-            <strong>Request a lesson</strong>
-            <span>$150 an hour. Hunter confirms the time.</span>
-          </a>
+        <p class="eyebrow">Right now</p>
+        <h2 style="margin: 8px 0 8px;">Long Bay, this hour.</h2>
+        <p class="muted">A model reading for the beach, not a mast in the sand. The call about an hour before the lesson is the one that decides the day.</p>
+        <div class="now-grid" id="now-weather" hidden>
+          <div><strong data-now="speed">—</strong><span>Wind</span></div>
+          <div><strong data-now="gust">—</strong><span>Gust</span></div>
+          <div><strong data-now="dir">—</strong><span>Direction</span></div>
+          <div><strong data-now="temp">—</strong><span>Air</span></div>
         </div>
+      </div>
+
+      <div class="wind-note">
+        <p class="eyebrow">Forecast</p>
+        <h2 style="margin: 8px 0 8px;">The next few days.</h2>
+        <p class="muted">Windfinder for Long Bay. Knots. Under 12, no lesson. Above 25, we discourage it unless you are already advanced.</p>
+        <div class="forecast-embed">
+          <script src="https://www.windfinder.com/widget/forecast/js/providenciales_long_bay?unit_wind=kts&unit_temperature=f&days=4"></script>
+        </div>
+        <p class="faq-cta"><a class="btn btn-gold" href="/#inquiry-form">Request a lesson</a></p>
       </div>
     </div>
   </main>
@@ -118,7 +120,7 @@
       <div>© <span id="year"></span> Caicos Kiteboarding. All rights reserved.</div>
     </div>
   </footer>
-  <script src="assets/js/main.js?v=5"></script>
+  <script src="assets/js/main.js?v=7"></script>
   <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 </body>
 </html>

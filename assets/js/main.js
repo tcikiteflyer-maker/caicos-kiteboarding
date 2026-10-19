@@ -88,3 +88,33 @@ form?.addEventListener("submit", async (event) => {
     submitButton.disabled = false;
   }
 });
+
+const windDirs = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
+
+fetch("https://api.open-meteo.com/v1/forecast?latitude=21.7978&longitude=-72.1486&current=temperature_2m,wind_speed_10m,wind_direction_10m,wind_gusts_10m&wind_speed_unit=kn&temperature_unit=fahrenheit&timezone=America/Grand_Turk")
+  .then((response) => response.json())
+  .then((data) => {
+    const current = data.current;
+    if (!current) return;
+    const speed = Math.round(current.wind_speed_10m);
+    const gust = Math.round(current.wind_gusts_10m);
+    const dir = windDirs[Math.round((((current.wind_direction_10m % 360) + 360) % 360) / 22.5) % 16];
+    const temp = Math.round(current.temperature_2m);
+    document.querySelectorAll("[data-wind-speed]").forEach((el) => {
+      el.textContent = `${speed} kn`;
+    });
+    document.querySelectorAll("[data-wind-dir]").forEach((el) => {
+      el.textContent = dir;
+    });
+    document.querySelectorAll(".live-wind").forEach((el) => {
+      el.hidden = false;
+    });
+    const now = document.querySelector("#now-weather");
+    if (!now) return;
+    now.querySelector("[data-now=speed]").textContent = `${speed} kn`;
+    now.querySelector("[data-now=gust]").textContent = `${gust} kn`;
+    now.querySelector("[data-now=dir]").textContent = dir;
+    now.querySelector("[data-now=temp]").textContent = `${temp}°F`;
+    now.hidden = false;
+  })
+  .catch(() => {});

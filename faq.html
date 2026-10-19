@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/styles.css?v=19" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=21" />
 </head>
 <body class="page">
   <header class="nav">
@@ -17,6 +17,10 @@
       <div class="brand-name">
         Caicos Kiteboarding
         <span>Long Bay Beach</span>
+      </div>
+      <div class="live-wind" hidden>
+        <strong data-wind-speed></strong>
+        <span data-wind-dir></span>
       </div>
     </a>
     <button class="menu-toggle" aria-label="Open menu">☰</button>
@@ -119,7 +123,7 @@
       <div>© <span id="year"></span> Caicos Kiteboarding. All rights reserved.</div>
     </div>
   </footer>
-  <script src="assets/js/main.js?v=5"></script>
+  <script src="assets/js/main.js?v=7"></script>
   <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 </body>
 </html>
