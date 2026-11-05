@@ -623,6 +623,26 @@ footer strong {
 }
 
 @media (max-width: 880px) {
+  .sticky-contact {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 50;
+    display: flex;
+    gap: 8px;
+    padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+    background: rgba(0, 8, 119, 0.96);
+  }
+
+  .sticky-contact .btn {
+    flex: 1;
+  }
+
+  body.has-sticky-contact {
+    padding-bottom: 78px;
+  }
+
   .brand-mark {
     height: 26px;
     max-width: 92px;

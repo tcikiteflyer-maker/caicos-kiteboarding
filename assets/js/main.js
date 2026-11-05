@@ -138,3 +138,13 @@ fetch("https://api.open-meteo.com/v1/forecast?latitude=21.7978&longitude=-72.148
     body: page,
   }).catch(() => {});
 })();
+
+if (window.matchMedia("(max-width: 880px)").matches) {
+  const bar = document.createElement("div");
+  bar.className = "sticky-contact";
+  bar.innerHTML =
+    '<a class="btn btn-wa" href="https://wa.me/16492467777" target="_blank" rel="noopener">WhatsApp</a>' +
+    '<a class="btn btn-phone" href="tel:+16492467777">Call</a>';
+  document.body.appendChild(bar);
+  document.body.classList.add("has-sticky-contact");
+}
