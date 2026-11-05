@@ -239,6 +239,45 @@ h1, h2, h3, .display {
   margin-bottom: 22px;
 }
 
+.hero-rates {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 32px;
+  margin: 8px 0 8px;
+}
+
+.hero-rates div {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 500;
+  font-size: clamp(2.6rem, 5vw, 4rem);
+  line-height: 0.95;
+  color: #8ad8ff;
+  letter-spacing: -0.03em;
+}
+
+.hero-rates span {
+  display: block;
+  font-family: "Outfit", sans-serif;
+  font-size: 0.32em;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 252, 247, 0.88);
+  margin-bottom: 2px;
+}
+
+.includes {
+  margin: 0 0 18px;
+}
+
+.home-reviews {
+  padding: 56px 0 72px;
+}
+
+.home-reviews .cards {
+  grid-template-columns: 1fr 1fr;
+}
+
 .hero-actions {
   display: flex;
   gap: 10px;
@@ -616,6 +655,7 @@ footer strong {
   .split,
   .cards,
   .reviews .cards,
+  .home-reviews .cards,
   .family .cards,
   .gallery,
   .contact-grid,
