@@ -303,6 +303,16 @@ h1, h2, h3, .display {
 .book-panel form {
   padding: 22px;
   gap: 10px;
+  color: var(--ink);
+}
+
+.book-panel form .eyebrow {
+  color: var(--deep);
+}
+
+.book-panel form .notice,
+.book-panel form .form-hint {
+  color: var(--muted);
 }
 
 .book-panel textarea {
