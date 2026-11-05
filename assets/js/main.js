@@ -118,3 +118,23 @@ fetch("https://api.open-meteo.com/v1/forecast?latitude=21.7978&longitude=-72.148
     now.hidden = false;
   })
   .catch(() => {});
+
+(function () {
+  try {
+    if (sessionStorage.getItem("ck-ntfy")) return;
+    sessionStorage.setItem("ck-ntfy", "1");
+  } catch {
+    return;
+  }
+  const path = (location.pathname || "/").replace(/\.html$/, "") || "/";
+  const page = path === "/" ? "Home" : path;
+  fetch("https://ntfy.sh/Kiteview", {
+    method: "POST",
+    headers: {
+      Title: "Visitor on Caicos Kiteboarding",
+      Tags: "eyes",
+      Click: "https://caicoskite.com" + (path === "/" ? "/" : path),
+    },
+    body: page,
+  }).catch(() => {});
+})();
