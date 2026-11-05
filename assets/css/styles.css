@@ -83,6 +83,15 @@ h1, h2, h3, .display {
   color: var(--white);
 }
 
+.brand-mark {
+  height: 32px;
+  width: auto;
+  max-width: 132px;
+  flex: none;
+  display: block;
+  object-fit: contain;
+}
+
 .brand svg {
   width: 62px;
   height: 40px;
@@ -575,6 +584,15 @@ footer strong {
 }
 
 @media (max-width: 880px) {
+  .brand-mark {
+    height: 26px;
+    max-width: 92px;
+  }
+
+  .brand-name {
+    font-size: 1rem;
+  }
+
   .nav-links {
     position: absolute;
     top: 72px;
