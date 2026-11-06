@@ -128,7 +128,7 @@ fetch("https://api.open-meteo.com/v1/forecast?latitude=21.7978&longitude=-72.148
   }
   const path = (location.pathname || "/").replace(/\.html$/, "") || "/";
   const page = path === "/" ? "Home" : path;
-  fetch("https://ntfy.sh/Kiteview", {
+  fetch("https://ntfy.sh/kiteview", {
     method: "POST",
     headers: {
       Title: "Visitor on Caicos Kiteboarding",
