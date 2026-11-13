@@ -120,23 +120,112 @@ fetch("https://api.open-meteo.com/v1/forecast?latitude=21.7978&longitude=-72.148
   .catch(() => {});
 
 (function () {
-  try {
-    if (sessionStorage.getItem("ck-ntfy")) return;
-    sessionStorage.setItem("ck-ntfy", "1");
-  } catch {
-    return;
-  }
+  const TOPIC = "https://ntfy.sh/kiteview";
+  const KEY = "ck-visit";
+  if (/bot|crawl|spider|headless|preview/i.test(navigator.userAgent || "")) return;
+
   const path = (location.pathname || "/").replace(/\.html$/, "") || "/";
-  const page = path === "/" ? "Home" : path;
-  fetch("https://ntfy.sh/kiteview", {
-    method: "POST",
-    headers: {
-      Title: "Visitor on Caicos Kiteboarding",
-      Tags: "eyes",
-      Click: "https://caicoskite.com" + (path === "/" ? "/" : path),
-    },
-    body: page,
-  }).catch(() => {});
+  const page = path;
+
+  function load() {
+    try {
+      return JSON.parse(sessionStorage.getItem(KEY) || "null");
+    } catch {
+      return null;
+    }
+  }
+  function save(state) {
+    try {
+      sessionStorage.setItem(KEY, JSON.stringify(state));
+    } catch {}
+  }
+  function post(title, body, tags) {
+    fetch(TOPIC, {
+      method: "POST",
+      keepalive: true,
+      headers: {
+        Title: title,
+        Tags: tags,
+        Click: "https://caicoskite.com" + (page === "/" ? "/" : page),
+      },
+      body,
+    }).catch(() => {});
+  }
+  function duration(ms) {
+    const sec = Math.max(1, Math.round(ms / 1000));
+    const m = Math.floor(sec / 60);
+    const s = sec % 60;
+    if (m < 1) return sec + " sec";
+    return m + " min " + s + " sec";
+  }
+
+  let state = load();
+  const fresh = !state;
+  if (!state) {
+    state = { t: Date.now(), pages: [], ref: document.referrer || "", place: "", left: false };
+  }
+  if (!state.pages.includes(page)) state.pages.push(page);
+  try {
+    sessionStorage.removeItem("ck-nav");
+  } catch {}
+  save(state);
+
+  if (fresh) {
+    const refLine = state.ref ? "\nFrom: " + state.ref : "";
+    fetch("https://ipwho.is/")
+      .then((r) => r.json())
+      .then((g) => {
+        if (!g || g.success === false) throw new Error("geo");
+        const place = [g.city, g.region, g.country].filter(Boolean).join(", ");
+        const current = load() || state;
+        current.place = place;
+        save(current);
+        post("New visitor", place + "\n" + page + "\nPages: " + page + refLine, "globe_with_meridians");
+      })
+      .catch(() => {
+        post("New visitor", page + "\nPages: " + page + refLine, "globe_with_meridians");
+      });
+  }
+
+  function leave() {
+    let nav = false;
+    try {
+      nav = sessionStorage.getItem("ck-nav") === "1";
+    } catch {}
+    if (nav) return;
+    const current = load();
+    if (!current || current.left) return;
+    current.left = true;
+    save(current);
+    const where = current.place ? current.place + "\n" : "";
+    const from = current.ref ? "\nFrom: " + current.ref : "";
+    post(
+      "Visitor left",
+      where +
+        page +
+        "\nTime on site: " +
+        duration(Date.now() - current.t) +
+        "\nPages: " +
+        current.pages.join(" → ") +
+        from,
+      "hourglass"
+    );
+  }
+
+  document.addEventListener("click", (event) => {
+    const link = event.target.closest && event.target.closest("a");
+    if (!link || !link.href) return;
+    try {
+      const next = new URL(link.href, location.href);
+      if (next.origin === location.origin && link.target !== "_blank") {
+        sessionStorage.setItem("ck-nav", "1");
+      }
+    } catch {}
+  });
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "hidden") leave();
+  });
+  window.addEventListener("pagehide", leave);
 })();
 
 if (window.matchMedia("(max-width: 880px)").matches) {
